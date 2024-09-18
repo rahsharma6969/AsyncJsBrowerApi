@@ -1,0 +1,67 @@
+Defination:
+
+The XMLHttpRequest object is a built-in JavaScript object used to interact with servers. It allows for the retrieval and submission of data to a server asynchronously (in the background), without needing to reload the entire webpage. This is a core component of AJAX (Asynchronous JavaScript and XML), which facilitates seamless data exchanges between the client and the server.
+
+In AJAX, XMLHttpRequest is used to send requests to a server and handle the response without refreshing the page.
+
+
+
+1. Create an instance of XMLHttpRequest:
+This initializes the object and prepares it for sending requests.
+
+
+const xhr = new XMLHttpRequest();
+2. Configure the request (using open()):
+The open() method specifies the request type (e.g., GET or POST), the URL of the resource, and whether the request should be asynchronous or synchronous.
+
+
+xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+First argument: HTTP method (GET, POST, etc.).
+Second argument: URL to which the request is sent.
+Third argument: Boolean to indicate whether the request is asynchronous (true).
+3. Set up the response handling (using onload or onreadystatechange):
+The onload or onreadystatechange event handlers define what to do when the response from the server is received.
+
+
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    console.log("Response received:", xhr.responseText);
+  } else {
+    console.error("Error:", xhr.statusText);
+  }
+};
+xhr.status returns the HTTP status code (200 for success, 404 for not found, etc.).
+xhr.responseText contains the raw text response from the server (which can be parsed if needed, e.g., using JSON.parse()).
+
+4. Send the request (using send()):
+Once the request is set up, the send() method initiates the actual data transfer.
+
+
+
+xhr.send();
+Example of XMLHttpRequest in AJAX
+Here’s an example that sends a GET request to an API to retrieve data asynchronously:
+
+
+
+const xhr = new XMLHttpRequest();
+
+
+xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+
+
+xhr.onload = function () {
+  if (xhr.status === 200) {
+    // Parse the JSON response
+    const users = JSON.parse(xhr.responseText);
+
+    // Log the user names to the console
+    users.forEach(user => console.log(user.name));
+  } else {
+    
+    console.error("Error fetching data: " + xhr.statusText);
+  }
+};
+
+
+xhr.send();

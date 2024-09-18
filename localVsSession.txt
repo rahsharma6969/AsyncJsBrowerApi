@@ -1,0 +1,26 @@
+### Purpose of **localStorage** and **sessionStorage** APIs
+
+Both `localStorage` and `sessionStorage` are part of the **Web Storage API** and are used to store key-value pairs in a web browser. They allow developers to store data persistently (localStorage) or temporarily (sessionStorage) within the client, helping manage state or information between page reloads or sessions.
+
+### **localStorage**
+- **Purpose**: `localStorage` is used to store data persistently in the browser. The data remains even after the browser is closed and can be accessed across different sessions or browser tabs.
+- **Data Persistence**: Data is not deleted unless manually removed via code or by the user.
+- **Use Cases**: Ideal for storing long-term user preferences, themes, or login tokens for automatic logins.
+
+**Example Use Case**:
+- Storing a user's theme preference (dark/light mode) across multiple sessions so the preference persists even after the browser is closed and reopened.
+
+### **sessionStorage**
+- **Purpose**: `sessionStorage` stores data for the duration of a single browser session (i.e., as long as the browser tab is open). Once the tab is closed, the data is cleared.
+- **Data Persistence**: Data only lasts as long as the page session is active.
+- **Use Cases**: Suitable for storing temporary data that needs to persist across page reloads but doesn’t need to be kept beyond the current session, like form inputs or session-specific user data.
+
+**Example Use Case**:
+- Storing form data temporarily so that if a page is accidentally refreshed, the form inputs are not lost during that session.
+
+### Key Differences:
+- **Persistence**: `localStorage` keeps data until explicitly removed; `sessionStorage` clears data once the session ends.
+- **Scope**: `localStorage` is accessible across all tabs and windows for the same origin, while `sessionStorage` is only accessible within the current tab or window.
+
+### Conclusion:
+`localStorage` is ideal for data that needs to persist across sessions, like user settings, while `sessionStorage` is best for temporary data, such as data that only needs to exist for a single session or tab.
